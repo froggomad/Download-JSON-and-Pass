@@ -136,3 +136,9 @@ let json = sender as? [String:Any] {
  secondVC.json = json
  ```
  * Here's where the actual data gets passed to the second view controller. json in this context is a member of secondVC which is the second view controller
+
+### Triggering a segue
+```swift
+self.performSegue(withIdentifier: "secondVC", sender: self.json)
+```
+* withIdentifier is the segue's identifier defined earlier. sender is the data you want to pass (unwrapped in ```prepare(for: segue, sender)```)
