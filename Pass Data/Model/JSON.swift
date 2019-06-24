@@ -25,17 +25,17 @@ class JsonHandler {
             options: .prettyPrinted
             ),
             let jsonString = String(data: theJSONData,
-                                     encoding: String.Encoding.ascii) {
+                                    encoding: String.Encoding.ascii) {
             return jsonString
         }
         return "Invalid for JSON"
     }
     
-    func something() {
-        
-        
+    //If for some reason you need your JSON from a string to an object
+    func jsonStringToObject(jsonString: String) -> [String:Any] {
+        let jsonDict = jsonString.toJSON() as? [String:Any] ?? ["Invalid":"Json"] //?? provides default value in case cast fails
+        return jsonDict
     }
-    
     
 }
 

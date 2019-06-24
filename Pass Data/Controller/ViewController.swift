@@ -16,13 +16,10 @@ class ViewController: UIViewController {
         super.viewDidAppear(true)
         //instantiate a Network class
         let network = Network()
-        //get your JSON using the Alamofire Library (using the Network() method makeGetRequest(url: String) { })
+        //get your JSON using the Alamofire Library)
         network.makeGetRequest(url: "https://jsonplaceholder.typicode.com/todos/1") {
             //everything in this block runs after the download has completed
-            
-            
             self.json = network.jsonOutput
-
             self.parseJsonAndSegue()
         }
     }

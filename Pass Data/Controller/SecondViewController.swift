@@ -30,23 +30,25 @@ class SecondViewController: UIViewController {
         idLbl.text = id
         authorLbl.text = json["author"] as? String
         //convert dict back to JSON String (to send back to server or html5 app maybe)
-        prepareJsonForUpload()
+        prepareJsonForPost()
     }
-    
-    func prepareJsonForUpload() {
+    //if you need your JSON as a string
+    func prepareJsonForPost() {
         let jsonHandler = JsonHandler(self.json)
-        print(jsonHandler.jsonifyDict())
+        //JSON String with line breaks
+        let jsonString = jsonHandler.jsonifyDict()
+        print(jsonString)
     }
     
-
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }
