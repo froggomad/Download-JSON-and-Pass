@@ -29,3 +29,15 @@ The JSON is then mutated and passed to a second view controller using a segue
     
     ###Now when you open your project, do NOT open the xcodeproj file - it will just crash when you try to run the project.
     1. Open the .xcworkspace file instead. This is your new Xcode project
+
+## About the Project
+
+* The File Structure May be a bit different than you're used to in an Xcode project - that's because the project is built using the MVC (Model/View/Controller) methodology.
+
+### About MVC Methodology:
+1. The MVC Methodology strives to separate code, making organization a priority, maintainability easier, and potentially increasing your app's performance.
+1. To make things easier, I group files by their intended purpose.
+1. Files changing a view are placed in the Controller group
+1. Files changing data or containing global constants are stored in the Model group
+1. Custom Views, Storyboards, and XIBs are stored in the View folder
+1. Other project files (xcassets, info.plist, appDelegate) are stored in the Supporting Files group
