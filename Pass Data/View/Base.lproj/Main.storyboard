@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Pass_Data" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <segue destination="KOJ-Jt-n7c" kind="presentation" identifier="secondVC" id="5Tn-Yd-YEf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+        <!--Second View Controller-->
+        <scene sceneID="JbC-yf-SBb">
+            <objects>
+                <viewController id="KOJ-Jt-n7c" customClass="SecondViewController" customModule="Pass_Data" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Fhd-Fg-EMt">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gfv-KT-sQg">
+                                <rect key="frame" x="176.5" y="52" width="61.5" height="29"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rnv-ya-iS8">
+                                <rect key="frame" x="196" y="97" width="22.5" height="29"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Author" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HAC-ep-kAE">
+                                <rect key="frame" x="172" y="134" width="70" height="29"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Gfv-KT-sQg" firstAttribute="centerX" secondItem="oRT-bd-XWM" secondAttribute="centerX" id="6CM-S8-MUe"/>
+                            <constraint firstItem="Gfv-KT-sQg" firstAttribute="top" secondItem="oRT-bd-XWM" secondAttribute="top" constant="8" id="Gpt-49-gbC"/>
+                            <constraint firstItem="HAC-ep-kAE" firstAttribute="top" secondItem="rnv-ya-iS8" secondAttribute="bottom" constant="8" id="K84-Xq-OUC"/>
+                            <constraint firstItem="rnv-ya-iS8" firstAttribute="centerX" secondItem="oRT-bd-XWM" secondAttribute="centerX" id="Mtn-TZ-QMI"/>
+                            <constraint firstItem="HAC-ep-kAE" firstAttribute="centerX" secondItem="oRT-bd-XWM" secondAttribute="centerX" id="NHh-ho-r3x"/>
+                            <constraint firstItem="rnv-ya-iS8" firstAttribute="top" secondItem="Gfv-KT-sQg" secondAttribute="bottom" constant="16" id="uBI-c2-u7V"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="oRT-bd-XWM"/>
+                    </view>
+                    <connections>
+                        <outlet property="authorLbl" destination="HAC-ep-kAE" id="40w-0N-055"/>
+                        <outlet property="idLbl" destination="rnv-ya-iS8" id="yiu-gF-Wig"/>
+                        <outlet property="nameLbl" destination="Gfv-KT-sQg" id="9Fb-Nr-1GD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="krB-p8-Rw3" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+</document>
