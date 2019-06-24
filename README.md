@@ -36,6 +36,24 @@
 
 * The File Structure May be a bit different than you're used to in an Xcode project - that's because the project is built using the MVC (Model/View/Controller) methodology.
 * You may also notice the View Controllers aren't responsible for much at all.
+* A Completion Handler is used where asynchronous programming is involved. This ensures needed data (such as downloaded data) is available before continuing.
+    i. We define a completion handler by defining a TypeAlias. This is stored as a Global Constant (though really it doesn't need to be, just for example purposes) 
+    ```swift
+    typealias DownloadComplete = () -> ()
+    ```
+    i. The completion handler is defined in a function like:
+    ```swift
+    func foo(complete: DownloadComplete()) {
+      //do something asynchronous
+      complete() //on the line after the asynchronous block completes
+    }
+    ```
+    i. The function foo is then called like:
+    ```swift
+    foo() {//do things after foo is finished, ex:
+        print("job done")
+    }
+    ```
 
 ### About MVC Methodology:
 1. The MVC Methodology strives to separate code, making organization a priority, maintainability easier, and potentially increasing your app's performance.
