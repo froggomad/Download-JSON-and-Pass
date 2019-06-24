@@ -33,11 +33,40 @@ The JSON is then mutated and passed to a second view controller using a segue
 ## About the Project
 
 * The File Structure May be a bit different than you're used to in an Xcode project - that's because the project is built using the MVC (Model/View/Controller) methodology.
+* You may also notice the View Controllers aren't responsible for much at all.
 
 ### About MVC Methodology:
 1. The MVC Methodology strives to separate code, making organization a priority, maintainability easier, and potentially increasing your app's performance.
 1. To make things easier, I group files by their intended purpose.
-1. Files changing a view are placed in the Controller group
+1. Files changing a view (View Controllers) are placed in the Controller group
 1. Files changing data or containing global constants are stored in the Model group
 1. Custom Views, Storyboards, and XIBs are stored in the View folder
 1. Other project files (xcassets, info.plist, appDelegate) are stored in the Supporting Files group
+
+### Project Files and Purposes:
+
+1. Model/Globals.swift
+    * Stores Global Constants
+    
+1. Model/JSON.swift
+    * Responsible for modifying JSON - contains the JsonHandler() Class which takes a Dictionary and outputs a JSON String
+    * contains the String extension toJSON() which converts a string to JSON
+    
+1. Network.swift
+    * Responsible for making Network Get Requests
+    * Would also be responsible for other network requests
+    
+1. ViewController.swift
+    * This is the initial entry point.
+    * When the view appears:
+        1. the Network() class is instantiated
+        1. A get request is made - the payload contains JSON
+        1. The payload is sent to a class variable
+        1. The payload is modified
+        1. A segue is triggered, the payload is the sender
+        1. During segue, the sender is assigned to a variable in the Second View Controller
+        
+1. SecondViewController.swift
+    * When the view is loaded:
+        1. JSON data that isn't a string is converted to a string
+        1. JSON data is displayed on labels
