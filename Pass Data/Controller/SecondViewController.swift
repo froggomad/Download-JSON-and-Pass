@@ -30,14 +30,21 @@ class SecondViewController: UIViewController {
         idLbl.text = id
         authorLbl.text = json["author"] as? String
         //convert dict back to JSON String (to send back to server or html5 app maybe)
-        prepareJsonForPost()
+        postJson()
     }
     //if you need your JSON as a string
-    func prepareJsonForPost() {
+    func postJson() {
         let jsonHandler = JsonHandler(self.json)
         //JSON String with line breaks
         let jsonString = jsonHandler.jsonifyDict()
-        print(jsonString)
+        let network = Network()
+        network.postParams(url: "https://ptsv2.com/t/asdf/post", json: jsonString) {
+            
+        }
+        
+        network.postBody(url: "https://ptsv2.com/t/asdf/post", json: jsonString) {
+            print("done")
+        }
     }
     
     

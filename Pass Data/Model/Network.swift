@@ -13,6 +13,10 @@ class Network {
     //accessible via Network.jsonOutput
     var jsonOutput = [String:Any]()
     
+    var body = ""
+    
+    
+    
     func makeGetRequest(url: String, completed: @escaping DownloadComplete) {
         Alamofire.request(url)
             .responseJSON { response in
@@ -42,4 +46,36 @@ class Network {
                 completed()
         }
     }
+    //simple post request using params, not body
+    func postParams(url: String, json: String, completed: @escaping DownloadComplete) {
+        Alamofire.request(url, method: .post, parameters: [:], encoding: json as ParameterEncoding, headers: [:])
+    }
+    
+    //post request using Body
+    func postBody(url: String, json: String, completed: @escaping DownloadComplete) {
+        var request = URLRequest(url: URL(string: url)!)
+        request.httpMethod = HTTPMethod.post.rawValue
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        let pjson = json
+        let data = (pjson.data(using: .utf8))! as Data
+        request.httpBody = data
+        Alamofire.request(request).response { (response) in
+            print(response)
+            completed()
+        }
+    }
 }
+
+
+extension String: ParameterEncoding {
+    
+    public func encode(_ urlRequest: URLRequestConvertible, with parameters: Parameters?) throws -> URLRequest {
+        var request = try urlRequest.asURLRequest()
+        request.httpBody = data(using: .utf8, allowLossyConversion: false)
+        return request
+    }
+    
+}
+
+
