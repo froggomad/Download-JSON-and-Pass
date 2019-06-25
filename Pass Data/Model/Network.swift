@@ -66,17 +66,20 @@ class Network {
         } else {
             print("nil or invalid JSON?: \(json)")
         }
-        
+        if request.httpBody != nil {
         Alamofire.request(request).response { (response) in
             guard response.error == nil else {
                 print("Error: \(String(describing: response.error))")
-                    return
+                return
             }
                 print(response)
                 completed()
             }
             
+        } else {
+            print("body wasn't set")
         }
+    }
     
 }
 
