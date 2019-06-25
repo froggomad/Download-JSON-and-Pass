@@ -22,15 +22,14 @@ class Network {
             .responseJSON { response in
                 // check for errors
                 guard response.result.error == nil else {
-                    // got an error in getting the data, need to handle it
-                    print("error calling GET on /todos/1")
+                    print("error calling GET on \(url)")
                     print(response.result.error!)
                     return
                 }
                 
-                // make sure we got some JSON since that's what we expect
+                // make sure we have JSON
                 guard let json = response.result.value as? [String: Any] else {
-                    print("didn't get todo object as JSON from API")
+                    print("didn't get object as JSON from API")
                     if let error = response.result.error {
                         print("Error: \(error)")
                     }
@@ -38,7 +37,7 @@ class Network {
                 }
                 // get and print the title
                 guard let todoTitle = json["title"] as? String else {
-                    print("Could not get todo title from JSON")
+                    print("Could not get title from JSON")
                     return
                 }
                 self.jsonOutput = json
@@ -51,20 +50,34 @@ class Network {
         Alamofire.request(url, method: .post, parameters: [:], encoding: json as ParameterEncoding, headers: [:])
     }
     
-    //post request using Body
+    //post request using Body showing error handling
     func postBody(url: String, json: String, completed: @escaping DownloadComplete) {
         var request = URLRequest(url: URL(string: url)!)
+        //using POST method
         request.httpMethod = HTTPMethod.post.rawValue
+        //MIME type for header
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
-        let pjson = json
-        let data = (pjson.data(using: .utf8))! as Data
-        request.httpBody = data
-        Alamofire.request(request).response { (response) in
-            print(response)
-            completed()
+        //mutate json into data object
+        let data = (json.data(using: .utf8))! as Data
+        //make sure there's data before sending the request
+        if !data.isEmpty {
+            request.httpBody = data
+        } else {
+            print("nil or invalid JSON?: \(json)")
         }
-    }
+        
+        Alamofire.request(request).response { (response) in
+            guard response.error == nil else {
+                print("Error: \(String(describing: response.error))")
+                    return
+            }
+                print(response)
+                completed()
+            }
+            
+        }
+    
 }
 
 
